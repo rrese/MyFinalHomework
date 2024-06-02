@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/colorBackground"
+    tools:context=".WeatherDisplay">
+
+    <SearchView
+        android:id="@+id/search_view"
+        android:layout_width="354dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.155"
+        app:searchBlockColor="#ffffff"
+        app:searchBlockHeight="150"
+        app:textColorSearch="#9b9b9b"
+        app:textHintSearch="输入查询关键字"
+        app:textSizeSearch="5dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/popularcities"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.329" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="526dp" />
+
+    <Button
+        android:id="@+id/btn_bj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/beijing"
+        android:onClick="click"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/btn_sh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/shanghai"
+        android:onClick="click"
+        app:layout_constraintStart_toEndOf="@+id/btn_bj"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/btn_sz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="37dp"
+        android:text="@string/shenzhen"
+        android:onClick="click"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_sh"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/btn_nj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/nanjing"
+        android:onClick="click"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_bj" />
+
+    <Button
+        android:id="@+id/btn_wh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/wuhan"
+        android:onClick="click"
+        app:layout_constraintStart_toEndOf="@+id/btn_nj"
+        app:layout_constraintTop_toBottomOf="@+id/btn_sh" />
+
+    <Button
+        android:id="@+id/btn_cd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="37dp"
+        android:text="@string/chengdu"
+        android:onClick="click"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_wh"
+        app:layout_constraintTop_toBottomOf="@+id/btn_sz" />
+
+    <Button
+        android:id="@+id/btn_xa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/xian"
+        android:onClick="click"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_nj" />
+
+    <Button
+        android:id="@+id/btn_heb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/haerbin"
+        android:onClick="click"
+        app:layout_constraintStart_toEndOf="@+id/btn_xa"
+        app:layout_constraintTop_toBottomOf="@+id/btn_wh" />
+
+    <Button
+        android:id="@+id/btn_wlmq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="37dp"
+        android:text="@string/wulumuqi"
+        android:onClick="click"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_heb"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cd" />
+
+    <Button
+        android:id="@+id/btn_more"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/colorBackground"
+        android:onClick="moreclick"
+        android:text="@string/more"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/material_dynamic_neutral60"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_wlmq"
+        app:layout_constraintVertical_bias="0.006" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

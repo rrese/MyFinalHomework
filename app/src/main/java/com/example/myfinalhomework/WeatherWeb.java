@@ -33,7 +33,12 @@ public class WeatherWeb extends AppCompatActivity implements Runnable{
                 Elements cities = citylist.children();
                 for (Element row : cities) {
                     Log.i(TAG, "weather:" + row.text());
-
+                    String str[]=row.text().trim().split("\\s");
+                    String city=str[0];
+                    String weather=str[1];
+                    String lowtemp=str[2];
+                    String hightemp=str[4];
+                    list.add(city+"-->"+weather+"-->"+lowtemp+"~"+hightemp);
                 }
             }
         }catch(MalformedURLException e){
@@ -41,6 +46,7 @@ public class WeatherWeb extends AppCompatActivity implements Runnable{
         }catch(IOException e){
             e.printStackTrace();
         }
+        bundle.putStringArrayList("mylist",list);
         Message msg=handler.obtainMessage(5,bundle);
         handler.sendMessage(msg);
     }
@@ -48,4 +54,3 @@ public class WeatherWeb extends AppCompatActivity implements Runnable{
         this.handler=handler;
     }
 }
-
