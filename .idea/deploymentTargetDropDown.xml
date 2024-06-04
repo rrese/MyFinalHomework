@@ -2,7 +2,16 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="CityList">
+        <State />
+      </entry>
       <entry key="WeatherDisplay">
+        <State />
+      </entry>
+      <entry key="WeatherQuery">
+        <State />
+      </entry>
+      <entry key="WelcomeActivity">
         <State />
       </entry>
       <entry key="app">

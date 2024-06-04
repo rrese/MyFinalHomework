@@ -9,12 +9,10 @@ import android.view.View;
 
 
 public class WeatherQuery extends Activity {
-    //private SearchView searchView;
     private static final String TAG = "weather";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_query);
-
     }
     public void click(View v){
         Intent config = new Intent(this, WeatherDisplay.class);
