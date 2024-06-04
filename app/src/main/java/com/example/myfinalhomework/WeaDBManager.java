@@ -9,56 +9,56 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBManager {
+public class WeaDBManager {
 
-    private DBHelper dbHelper;
+    private WeaDBHelper weadbhelper;
     private String TBNAME;
 
-    public DBManager(Context context) {
-        dbHelper = new DBHelper(context);
-        TBNAME = DBHelper.TB_NAME;
+    public WeaDBManager(Context context) {
+        weadbhelper = new WeaDBHelper(context);
+        TBNAME = WeaDBHelper.TB_NAME;
     }
 
     public void add(WeatherItem item){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = weadbhelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("city", item.getCity());
-        values.put("weather", item.getWeather());
-        values.put("tem", item.getTem());
+        values.put("CITY", item.getCity());
+        values.put("WEATHER", item.getWeather());
+        values.put("TEMPERATURE", item.getTem());
         db.insert(TBNAME, null, values);
         db.close();
     }
 
     public void addAll(List<WeatherItem> list){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = weadbhelper.getWritableDatabase();
         for (WeatherItem item : list) {
             ContentValues values = new ContentValues();
-            values.put("city", item.getCity());
-            values.put("weather", item.getWeather());
-            values.put("tem", item.getTem());
+            values.put("CITY", item.getCity());
+            values.put("WEATHER", item.getWeather());
+            values.put("TEMPERATURE", item.getTem());
             db.insert(TBNAME, null, values);
         }
         db.close();
     }
 
     public void delete(String city) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = weadbhelper.getWritableDatabase();
         db.delete(TBNAME, "CITY=?", new String[]{city});
         db.close();
     }
 
     public void deleteAll() {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = weadbhelper.getWritableDatabase();
         db.delete(TBNAME, null, null);
         db.close();
     }
 
     public void updata(WeatherItem item) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = weadbhelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("city", item.getCity());
-        values.put("weather", item.getWeather());
-        values.put("tem", item.getTem());
+        values.put("CITY", item.getCity());
+        values.put("WEATHER", item.getWeather());
+        values.put("TEMPERATURE", item.getTem());
         db.update(TBNAME, values, "CITY=?", new String[]{item.getCity()});
         db.close();
     }
@@ -66,7 +66,7 @@ public class DBManager {
     @SuppressLint("Range")
     public List<WeatherItem> listAll(){
         List<WeatherItem> weaList = null;
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = weadbhelper.getReadableDatabase();
         Cursor cursor = db.query(TBNAME, null, null, null, null, null, null);
         if(cursor!=null){
             weaList = new ArrayList<WeatherItem>();
@@ -86,7 +86,7 @@ public class DBManager {
 
     @SuppressLint("Range")
     public WeatherItem findByCityName(String city){
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = weadbhelper.getReadableDatabase();
         Cursor cursor = db.query(TBNAME, null, "CITY=?", new String[]{city}, null, null, null);
         WeatherItem weaItem = null;
         if(cursor!=null && cursor.moveToFirst()){

@@ -1,18 +1,27 @@
 package com.example.myfinalhomework;
 
 public class WeatherItem {
+    private  int id;
     private  String city;
     private String weather;
     private String tem;
     public WeatherItem(){
         super();
+        city="";
         weather="";
         tem="";
     }
-    public WeatherItem(String weather,String tem){
+    public WeatherItem(String city,String weather,String tem){
         super();
+        this.city=city;
         this.weather=weather;
         this.tem=tem;
+    }
+    public int getId(){
+        return  id;
+    }
+    public  void setId(int id){
+        this.id=id;
     }
     public String getCity(){
         return city;
@@ -33,4 +42,3 @@ public class WeatherItem {
         this.tem=tem;
     }
 }
-

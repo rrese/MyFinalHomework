@@ -2,13 +2,15 @@
     <string name="app_name">My FinalHomework</string>
     <string name="popularcities">热门城市</string>
     <string name="beijing">北京</string>
-    <string name="shanghai">上海</string>
+    <string name="nanjing">南京</string>
     <string name="shenzhen">深圳</string>
+    <string name="hangzhou">杭州</string>
     <string name="wuhan">武汉</string>
+    <string name="changsha">长沙</string>
     <string name="chengdu">成都</string>
     <string name="xian">西安</string>
     <string name="haerbin">哈尔滨</string>
-    <string name="wulumuqi">乌鲁木齐</string>
-    <string name="nanjing">南京</string>
+
+
     <string name="more">更多>></string>
 </resources>
