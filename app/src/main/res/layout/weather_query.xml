@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
@@ -14,27 +14,26 @@
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:inputType="textFilter"
+        app:iconifiedByDefault="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182"
-        app:iconifiedByDefault="false"
-        android:inputType="textFilter"/>
+        app:layout_constraintVertical_bias="0.180" />
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="337dp"
-        android:layout_height="251dp"
+        android:layout_width="336dp"
+        android:layout_height="96dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@id/searchView"
+        android:visibility="gone"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -53,30 +52,19 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.329" />
-
-    <Button
-        android:id="@+id/btn_bj"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/beijing"
-        android:onClick="click"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintVertical_bias="0.357" />
 
     <Button
         android:id="@+id/btn_nj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/nanjing"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
         android:onClick="click"
+        android:text="@string/nanjing"
         app:layout_constraintStart_toEndOf="@+id/btn_bj"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -85,46 +73,59 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="37dp"
-        android:text="@string/shenzhen"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="36dp"
         android:onClick="click"
+        android:text="@string/shenzhen"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btn_nj"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/btn_hz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/hangzhou"
-        android:onClick="click"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_bj" />
 
     <Button
         android:id="@+id/btn_wh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/wuhan"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
         android:onClick="click"
+        android:text="@string/wuhan"
         app:layout_constraintStart_toEndOf="@+id/btn_hz"
         app:layout_constraintTop_toBottomOf="@+id/btn_nj" />
+
+    <Button
+        android:id="@+id/btn_xa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:onClick="click"
+        android:text="@string/xian"
+        app:layout_constraintStart_toEndOf="@+id/btn_cd"
+        app:layout_constraintTop_toBottomOf="@+id/btn_wh" />
+
+    <Button
+        android:id="@+id/btn_hz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:onClick="click"
+        android:text="@string/hangzhou"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_bj" />
 
     <Button
         android:id="@+id/btn_cs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="37dp"
-        android:text="@string/changsha"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="36dp"
         android:onClick="click"
+        android:text="@string/changsha"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btn_wh"
         app:layout_constraintTop_toBottomOf="@+id/btn_sz" />
 
@@ -132,36 +133,37 @@
         android:id="@+id/btn_cd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/chengdu"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
         android:onClick="click"
+        android:text="@string/chengdu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_hz" />
-
-    <Button
-        android:id="@+id/btn_xa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/xian"
-        android:onClick="click"
-        app:layout_constraintStart_toEndOf="@+id/btn_cd"
-        app:layout_constraintTop_toBottomOf="@+id/btn_wh" />
 
     <Button
         android:id="@+id/btn_heb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="37dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="36dp"
         android:onClick="click"
         android:text="@string/haerbin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btn_xa"
         app:layout_constraintTop_toBottomOf="@+id/btn_cs" />
+
+    <Button
+        android:id="@+id/btn_bj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:onClick="click"
+        android:text="@string/beijing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/btn_more"
@@ -169,7 +171,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="28dp"
         android:background="@color/colorBackground"
         android:onClick="moreclick"
         android:text="@string/more"
@@ -178,7 +180,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_heb"
-        app:layout_constraintVertical_bias="0.006" />
+        app:layout_constraintVertical_bias="0.025" />
 
     <Button
         android:id="@+id/btn_mycity"

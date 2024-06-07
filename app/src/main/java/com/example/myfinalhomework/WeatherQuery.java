@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +25,9 @@ public class WeatherQuery extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_query);
 
-        ListView listView = findViewById(R.id.listView);
-//        设置ListView启动过滤
-        listView.setTextFilterEnabled(true);
-
         SearchView searchView =findViewById(R.id.searchView);
-//        设置该SearchView默认是否自动缩小为图标
         searchView.setIconifiedByDefault(false);
-//        设置该SearchView显示搜索图标
         searchView.setSubmitButtonEnabled(true);
-//        设置该SearchView内默认显示的搜索文字
         searchView.setQueryHint("点击搜索想要查询的城市");
 //        为SearchView组件设置事件的监听器
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -47,6 +42,8 @@ public class WeatherQuery extends Activity {
 //            用户输入时激发该方法
             @Override
             public boolean onQueryTextChange(String newText) {
+                ListView listView = findViewById(R.id.listView);
+                listView.setTextFilterEnabled(true);
                 List<String> citylist = new ArrayList<String>();
                 WeaDBManager weadbManager = new WeaDBManager(WeatherQuery.this);
                 for (WeatherItem weaItem : weadbManager.listAll()) {
@@ -55,15 +52,24 @@ public class WeatherQuery extends Activity {
                 List<String> recitylist = (List<String>) citylist;
                 ListAdapter adapter = new ArrayAdapter<String>(WeatherQuery.this, android.R.layout.simple_list_item_1, recitylist);
                 listView.setAdapter(adapter);
-
-
 //                如果newText不是长度为0的字符串
                 if (TextUtils.isEmpty(newText)){
 //                    清除ListView的过滤
                     listView.clearTextFilter();
+                    listView.setVisibility(View.GONE);
                 }else {
 //                    使用用户输入的内容对ListView的列表项进行过滤
                     listView.setFilterText(newText);
+                    listView.setVisibility(View.VISIBLE);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent config = new Intent(WeatherQuery.this, WeatherDisplay.class);
+                            TextView text = (TextView) view.findViewById(android.R.id.text1);
+                            config.putExtra("city",text.getText());
+                            startActivity(config);
+                        }
+                    });
                 }
                 return true;
             }
