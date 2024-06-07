@@ -61,7 +61,6 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation("org.jsoup:jsoup:1.17.2")
     implementation("com.github.bumptech.glide:glide:4.12.0")
-    //implementation("com.carson_ho:SearchLayout:1.0.1")
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)

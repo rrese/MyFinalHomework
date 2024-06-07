@@ -8,19 +8,18 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+public class UserDBManager {
 
-public class WeaDBManager {
-
-    private DBHelper weadbhelper;
+    private DBHelper userdbhelper;
     private String TBNAME;
 
-    public WeaDBManager(Context context) {
-        weadbhelper = new DBHelper(context);
-        TBNAME = DBHelper.TB_NAME_WEA;
+    public UserDBManager(Context context) {
+        userdbhelper = new DBHelper(context);
+        TBNAME = DBHelper.TB_NAME_USER;
     }
 
-    public void add(WeatherItem item){
-        SQLiteDatabase db = weadbhelper.getWritableDatabase();
+    public void add(UserCityItem item){
+        SQLiteDatabase db = userdbhelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("CITY", item.getCity());
         values.put("WEATHER", item.getWeather());
@@ -29,9 +28,9 @@ public class WeaDBManager {
         db.close();
     }
 
-    public void addAll(List<WeatherItem> list){
-        SQLiteDatabase db = weadbhelper.getWritableDatabase();
-        for (WeatherItem item : list) {
+    public void addAll(List<UserCityItem> list){
+        SQLiteDatabase db = userdbhelper.getWritableDatabase();
+        for (UserCityItem item : list) {
             ContentValues values = new ContentValues();
             values.put("CITY", item.getCity());
             values.put("WEATHER", item.getWeather());
@@ -42,50 +41,61 @@ public class WeaDBManager {
     }
 
     public void delete(String city) {
-        SQLiteDatabase db = weadbhelper.getWritableDatabase();
+        SQLiteDatabase db = userdbhelper.getWritableDatabase();
         db.delete(TBNAME, "CITY=?", new String[]{city});
         db.close();
     }
 
     public void deleteAll() {
-        SQLiteDatabase db = weadbhelper.getWritableDatabase();
+        SQLiteDatabase db = userdbhelper.getWritableDatabase();
         db.delete(TBNAME, null, null);
         db.close();
     }
 
+    public void updata(UserCityItem item) {
+        SQLiteDatabase db = userdbhelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("CITY", item.getCity());
+        values.put("WEATHER", item.getWeather());
+        values.put("TEMPERATURE", item.getTem());
+        db.update(TBNAME, values, "CITY=?", new String[]{item.getCity()});
+        db.close();
+    }
+
     @SuppressLint("Range")
-    public List<WeatherItem> listAll(){
-        List<WeatherItem> weaList = null;
-        SQLiteDatabase db = weadbhelper.getReadableDatabase();
+    public List<UserCityItem> listAll(){
+        List<UserCityItem> usercityList = null;
+        SQLiteDatabase db = userdbhelper.getReadableDatabase();
         Cursor cursor = db.query(TBNAME, null, null, null, null, null, null);
         if(cursor!=null){
-            weaList = new ArrayList<WeatherItem>();
+            usercityList = new ArrayList<UserCityItem>();
             while(cursor.moveToNext()){
-                WeatherItem item = new WeatherItem();
+                UserCityItem item = new UserCityItem();
                 item.setCity(cursor.getString(cursor.getColumnIndex("CITY")));
                 item.setWeather(cursor.getString(cursor.getColumnIndex("WEATHER")));
                 item.setTem(cursor.getString(cursor.getColumnIndex("TEMPERATURE")));
-                weaList.add(item);
+                usercityList.add(item);
             }
             cursor.close();
         }
         db.close();
-        return weaList;
+        return usercityList;
 
     }
+
     @SuppressLint("Range")
-    public WeatherItem findByCityName(String city){
-        SQLiteDatabase db = weadbhelper.getReadableDatabase();
+    public UserCityItem findByCityName(String city){
+        SQLiteDatabase db = userdbhelper.getReadableDatabase();
         Cursor cursor = db.query(TBNAME, null, "CITY=?", new String[]{city}, null, null, null);
-        WeatherItem weaItem = null;
+        UserCityItem usercityItem = null;
         if(cursor!=null && cursor.moveToFirst()){
-            weaItem = new WeatherItem();
-            weaItem.setCity(cursor.getString(cursor.getColumnIndex("CITY")));
-            weaItem.setWeather(cursor.getString(cursor.getColumnIndex("WEATHER")));
-            weaItem.setTem(cursor.getString(cursor.getColumnIndex("TEMPERATURE")));
+            usercityItem = new UserCityItem();
+            usercityItem.setCity(cursor.getString(cursor.getColumnIndex("CITY")));
+            usercityItem.setWeather(cursor.getString(cursor.getColumnIndex("WEATHER")));
+            usercityItem.setTem(cursor.getString(cursor.getColumnIndex("TEMPERATURE")));
             cursor.close();
         }
         db.close();
-        return weaItem;
+        return usercityItem;
     }
 }

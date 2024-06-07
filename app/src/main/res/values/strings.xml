@@ -11,6 +11,11 @@
     <string name="xian">西安</string>
     <string name="haerbin">哈尔滨</string>
 
-
     <string name="more">更多>></string>
+    <string name="back">返回</string>
+    <string name="add">加入我的</string>
+    <string name="delete">删除</string>
+    <string name="deleteall">一键清空</string>
+    <string name="mycity">我的</string>
+    <string name="cityconfig">城市管理</string>
 </resources>
