@@ -1,6 +1,5 @@
 package com.example.myfinalhomework;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,21 +24,19 @@ public class WeatherQuery extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_query);
 
+//      以下搜索框内容引用自：https://blog.csdn.net/weixin_46157140/article/details/108213511
         SearchView searchView =findViewById(R.id.searchView);
         searchView.setIconifiedByDefault(false);
         searchView.setSubmitButtonEnabled(true);
         searchView.setQueryHint("点击搜索想要查询的城市");
-//        为SearchView组件设置事件的监听器
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-//              实际应用中应该在该方法内执行实际查询
                 Intent config = new Intent(WeatherQuery.this, WeatherDisplay.class);
                 config.putExtra("city",query);
                 startActivity(config);
                 return false;
             }
-//            用户输入时激发该方法
             @Override
             public boolean onQueryTextChange(String newText) {
                 ListView listView = findViewById(R.id.listView);
@@ -52,14 +49,12 @@ public class WeatherQuery extends Activity {
                 List<String> recitylist = (List<String>) citylist;
                 ListAdapter adapter = new ArrayAdapter<String>(WeatherQuery.this, android.R.layout.simple_list_item_1, recitylist);
                 listView.setAdapter(adapter);
-//                如果newText不是长度为0的字符串
                 if (TextUtils.isEmpty(newText)){
-//                    清除ListView的过滤
                     listView.clearTextFilter();
                     listView.setVisibility(View.GONE);
                 }else {
-//                    使用用户输入的内容对ListView的列表项进行过滤
-                    listView.setFilterText(newText);
+//                    去掉filter方法过滤时出现的黑框，https://blog.csdn.net/w_xue/article/details/13773651
+                    ((ArrayAdapter<?>) adapter).getFilter().filter(newText);
                     listView.setVisibility(View.VISIBLE);
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
