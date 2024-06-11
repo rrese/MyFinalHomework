@@ -119,8 +119,6 @@ public class WeatherDisplay extends Activity implements Runnable {
                 Glide.with(this).load(R.drawable.wumai).into(imageView);
             } else if (weather.equals("沙尘暴")) {
                 Glide.with(this).load(R.drawable.shachenbao).into(imageView);
-            } else if (weather.equals("扬沙")) {
-                Glide.with(this).load(R.drawable.yangsha).into(imageView);
             }
         } catch (Exception e) {
             Toast.makeText(this, "暂无数据!", Toast.LENGTH_SHORT).show();
