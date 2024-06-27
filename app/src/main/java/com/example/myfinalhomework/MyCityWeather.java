@@ -93,6 +93,6 @@ public class MyCityWeather extends Activity {
         UserDBManager userDBManager = new UserDBManager(MyCityWeather.this);
         userDBManager.deleteAll();
         Log.i("userdb", "删除所有记录");
-        Toast.makeText(MyCityWeather.this, "已从我的城市中删除,请刷新!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MyCityWeather.this, "已清空城市管理列表,请刷新!", Toast.LENGTH_SHORT).show();
     }
 }
